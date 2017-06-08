@@ -20,6 +20,14 @@ minetest.register_chatcommand("c", {
 	end,
 })
 
+minetest.register_chatcommand("lua", {
+	params = "",
+	description = "Execute something in lua.",
+	func = function(term)
+		return pcall(loadstring(term))
+	end,
+})
+
 
 local time = math.floor(tonumber(os.clock()-load_time_start)*100+0.5)/100
 local msg = "["..modname.."] loaded after ca. "..time
